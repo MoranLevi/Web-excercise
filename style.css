@@ -43,4 +43,13 @@
     font-weight: bold;
 }
 
+.center {
+    /* border: 5px solid #FFFF00; */
+    text-align: center;
+}
+
+/* .center_table {
+    margin-left: auto;
+    margin-right: auto;
+  } */
 

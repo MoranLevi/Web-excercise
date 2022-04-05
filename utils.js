@@ -72,17 +72,23 @@ window.editRow = function ()
 
 window.initClickOnRow = function (firstRow)
 {
+    console.log("init");
     let i = firstRow;
+    if( i < 1)
+    {
+        return;
+    }      
     for(; i < table.rows.length; i++) {
         table.rows[i].onclick = function()
         {
 
             if(typeof rIndex !== "undefined") 
             {
+                console.log(rIndex);
                 table.rows[rIndex].classList.toggle("selected");
             }
 
-            // getthe selected row index
+            // get selected row index
             rIndex = this.rowIndex;
             // add class selected to the row
             this.classList.toggle("selected");
@@ -96,10 +102,25 @@ window.initClickOnRow = function (firstRow)
 
 window.deleteRow = function ()
 {
-    console.log("booo");
-    let table = document.getElementById("table");
+    // console.log("booo");
+    // let table = document.getElementById("table");
 
-    let index = this.rowIndex;
-    console.log(index);
-    table.deleteRow(index);
+    // let index2 = index;
+    // console.log(index);
+    // table.deleteRow(index2);
+    // table.deleteRow(rIndex);
+    // console.log(rIndex);
+
+    console.log("delete");
+    var td = event.target.parentNode; 
+    var tr = td.parentNode; // the row to be removed
+    console.log(tr);
+    tr.parentNode.removeChild(tr);
+
+    // console.log("hooo");
+    // clean the fields
+    // window.clearFields();
+
+    // add click on the new row
+    window.initClickOnRow(table.rows.length-1);
 }
