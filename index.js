@@ -1,0 +1,2 @@
+window.initClickOnRow(1);
+

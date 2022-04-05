@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>  
+    <h1 id="title">Worker Management System!</h1>
+    First Name: <input type="text" name="fname" id="fname"><br><br>
+    Last Name: <input type="text" name="lname" id="lname"><br><br>
+    Age: <input type="text" name="age" id="age"><br><br>
+    <button onclick="window.addRow()">Add Row</button>
+    <button onclick="window.editRow()">Edit Row</button>
+    <!-- <button onclick="window.deleteRow()">Delete Row</button> -->
+
+    <table id="table" class="content-table">
+        <thead>
+            <tr>
+                <td>Rank</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Age</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Moran</td>
+                <td>Levi</td>
+                <td>26</td>
+                <td><button onclick="window.deleteRow()">remove</button></td>
+            </tr>   
+            <tr>
+                <td>2</td>
+                <td>Almog</td>
+                <td>Afrgan</td>
+                <td>29</td>
+                <td><button onclick="window.deleteRow()">remove</button></td>
+            </tr>   
+            <tr>
+                <td>3</td>
+                <td>Shiran</td>
+                <td>Ben-Harush</td>
+                <td>32</td>
+                <td><button onclick="window.deleteRow()">remove</button></td>
+            </tr>      
+        </tbody>      
+    </table>
+
+    <script type="module" src="utils.js"></script>
+    <script type="module" src="index.js"></script>
+    
+</body>
+</html>
