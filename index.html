@@ -19,6 +19,8 @@
         <div class="box"><input type="text" name="fname" id="fname" placeholder="First Name"></div>
         <div class="box">Last Name:</div>
         <div class="box"><input type="text" name="lname" id="lname" placeholder="Last Name"></div>
+        <div class="box">ID:</div>
+        <div class="box"><input type="text" name="id" id="id" placeholder="ID"></div>
         <div class="box">Age:</div>
         <div class="box"><input type="text" name="age" id="age" placeholder="Age"></div>
         <div class="box"><button onclick="window.addRow()" class="add-edit-button">Add Row</button></div>
@@ -34,32 +36,32 @@
     <table id="table" class="content-table">
         <thead>
             <tr>
-                <td>Rank</td>
                 <td>First Name</td>
                 <td>Last Name</td>
+                <td>ID</td>
                 <td>Age</td>
                 <td>Delete</td>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>1</td>
                 <td>Moran</td>
                 <td>Levi</td>
+                <td>206215139</td>
                 <td>26</td>
                 <td><button disabled onclick="window.deleteRow()" id="removeButton" >remove</button></td>
             </tr>   
             <tr>
-                <td>2</td>
                 <td>Almog</td>
                 <td>Afrgan</td>
+                <td>305292150</td>
                 <td>29</td>
                 <td><button disabled onclick="window.deleteRow()" id="removeButton">remove</button></td>
             </tr>   
             <tr>
-                <td>3</td>
                 <td>Shiran</td>
                 <td>Ben-Harush</td>
+                <td>204789521</td>
                 <td>32</td>
                 <td><button disabled onclick="window.deleteRow()" id="removeButton">remove</button></td>
             </tr>      

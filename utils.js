@@ -1,8 +1,9 @@
-let counter = 4; // rank
+// let counter = 4; // rank
 
 window.clearFields = function() {
     document.getElementById('fname').value = "";
     document.getElementById('lname').value = "";
+    document.getElementById('id').value = "";
     document.getElementById('age').value = "";
 }
 
@@ -10,6 +11,7 @@ window.addRow = function() {
     // get input value
     let fname = document.getElementById('fname').value;
     let lname = document.getElementById('lname').value;
+    let id = document.getElementById('id').value;
     let age = document.getElementById('age').value;
 
     // get the html table
@@ -28,9 +30,10 @@ window.addRow = function() {
     let cel5 = newRow.insertCell(4);
 
     // add values to the cells
-    cel1.innerHTML = counter;
-    cel2.innerHTML = fname;
-    cel3.innerHTML = lname;
+    // cel1.innerHTML = counter;
+    cel1.innerHTML = fname;
+    cel2.innerHTML = lname;
+    cel3.innerHTML = id;
     cel4.innerHTML = age;
 
     // add remove button to the last cell
@@ -43,7 +46,7 @@ window.addRow = function() {
     cel5.appendChild(newElem);
 
     // add one to the next rank
-    counter++;
+    // counter++;
 
     // clean the fields
     clearFields();
@@ -65,8 +68,8 @@ window.editRow = function ()
     let table = document.getElementById("table");
 
     console.log(rIndex);
-    table.rows[rIndex].cells[1].innerHTML = document.getElementById("fname").value;
-    table.rows[rIndex].cells[2].innerHTML = document.getElementById("lname").value;
+    table.rows[rIndex].cells[0].innerHTML = document.getElementById("fname").value;
+    table.rows[rIndex].cells[1].innerHTML = document.getElementById("lname").value;
     table.rows[rIndex].cells[3].innerHTML = document.getElementById("age").value;
 
     //clean the fields
@@ -112,8 +115,10 @@ window.initClickOnRow = function ()
             this.classList.toggle("selected");
             this.getElementsByTagName('td')[4].getElementsByTagName('button')[0].removeAttribute("disabled");
                             
-            document.getElementById("fname").value = this.cells[1].innerHTML;
-            document.getElementById("lname").value = this.cells[2].innerHTML;
+            document.getElementById("fname").value = this.cells[0].innerHTML;
+            document.getElementById("lname").value = this.cells[1].innerHTML;
+            document.getElementById("id").value = this.cells[2].innerHTML;
+            document.getElementById("id").setAttribute('disabled', 'true');
             document.getElementById("age").value = this.cells[3].innerHTML;
         };
     }
@@ -121,6 +126,12 @@ window.initClickOnRow = function ()
 
 window.deleteRow = function ()
 {
+
+    let answer = window.confirm("Are you sure you want to delete this employee?");
+    if (!answer) {
+        return;
+    }
+
     clickRemove = 1;
 
     let indexToDelete = rIndex;
