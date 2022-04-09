@@ -1,2 +1,2 @@
-window.initClickOnRow(1);
+window.initClickOnRow();
 

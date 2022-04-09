@@ -34,10 +34,12 @@ window.addRow = function() {
     cel4.innerHTML = age;
 
     // add remove button to the last cell
-    let newElem = document.createElement( 'input' );
-    newElem.setAttribute("type", "button");
-    newElem.setAttribute("value", "remove");
-    newElem.setAttribute("onclick", 'deleteRow()')
+    let newElem = document.createElement( "button" );
+    newElem.innerHTML = "remove";
+    newElem.setAttribute("id", 'removeButton');
+    newElem.setAttribute("onclick", 'window.deleteRow()');
+    newElem.setAttribute("disabled", 'true');
+    
     cel5.appendChild(newElem);
 
     // add one to the next rank
@@ -47,19 +49,20 @@ window.addRow = function() {
     clearFields();
 
     // add click on the new row
-    initClickOnRow(table.rows.length-1);
+    initClickOnRow();
 
 
 }
 
 let table = document.getElementById("table");
 let rIndex;
+let deleteRow = 0; // symbolized that delete row. Do this for the first row after delete
+let clickRemove = 0; // symbolized that click on remove button. Do this for the select row to delete.
 
 // edit the row
 window.editRow = function ()
 {
     let table = document.getElementById("table");
-    // let rIndex;
 
     console.log(rIndex);
     table.rows[rIndex].cells[1].innerHTML = document.getElementById("fname").value;
@@ -70,28 +73,44 @@ window.editRow = function ()
     clearFields();
 }
 
-window.initClickOnRow = function (firstRow)
+window.initClickOnRow = function ()
 {
     console.log("init");
-    let i = firstRow;
-    if( i < 1)
-    {
-        return;
-    }      
-    for(; i < table.rows.length; i++) {
+    // let i = firstRow;
+    // if( i < 1)
+    // {
+    //     return;
+    // }   
+    console.log(table.rows.length);   
+    for(let i=1; i < table.rows.length; i++) {
         table.rows[i].onclick = function()
         {
-
+            if(clickRemove == 1)
+            {
+                clickRemove = 0;
+                return;
+            }
             if(typeof rIndex !== "undefined") 
             {
+                console.log("boooo");
                 console.log(rIndex);
-                table.rows[rIndex].classList.toggle("selected");
+                if( deleteRow == 0 )
+                {
+                    table.rows[rIndex].classList.toggle("selected");
+                    table.rows[rIndex].getElementsByTagName('td')[4].getElementsByTagName('button')[0].setAttribute("disabled","true");
+                }
+                else // deleteRow == 1
+                {
+                    deleteRow = 0;
+                }
             }
 
             // get selected row index
             rIndex = this.rowIndex;
             // add class selected to the row
+            console.log("hoo");
             this.classList.toggle("selected");
+            this.getElementsByTagName('td')[4].getElementsByTagName('button')[0].removeAttribute("disabled");
                             
             document.getElementById("fname").value = this.cells[1].innerHTML;
             document.getElementById("lname").value = this.cells[2].innerHTML;
@@ -102,25 +121,11 @@ window.initClickOnRow = function (firstRow)
 
 window.deleteRow = function ()
 {
-    // console.log("booo");
-    // let table = document.getElementById("table");
+    clickRemove = 1;
 
-    // let index2 = index;
-    // console.log(index);
-    // table.deleteRow(index2);
-    // table.deleteRow(rIndex);
-    // console.log(rIndex);
+    let indexToDelete = rIndex;
+    table.deleteRow(indexToDelete);
 
-    console.log("delete");
-    var td = event.target.parentNode; 
-    var tr = td.parentNode; // the row to be removed
-    console.log(tr);
-    tr.parentNode.removeChild(tr);
-
-    // console.log("hooo");
-    // clean the fields
-    // window.clearFields();
-
-    // add click on the new row
-    window.initClickOnRow(table.rows.length-1);
+    deleteRow = 1;
+    window.initClickOnRow();
 }
