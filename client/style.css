@@ -72,6 +72,8 @@
 .box:nth-child(8) {
     grid-column: span 6;
     text-align: right; 
+    font-size: 1.3vw;
+    margin: 4.5px 0;
 }
 
 .box:nth-child(3),

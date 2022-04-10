@@ -15,6 +15,8 @@ window.addRow = function() {
     let id = document.getElementById('id').value;
     let age = document.getElementById('age').value;
 
+    newEmployee = {"first_name": fname, "last_name": lname, "id": id, "age": age};
+    window.insertNewEmployee(newEmployee);
     // get the html table
     // 0 = the first table
     let table = document.getElementsByTagName('table')[0];
@@ -85,7 +87,7 @@ window.initClickOnRow = function ()
     // {
     //     return;
     // }   
-    console.log(table.rows.length);   
+    // console.log(table.rows.length);   
     for(let i=1; i < table.rows.length; i++) {
         table.rows[i].onclick = function()
         {
