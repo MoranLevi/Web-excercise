@@ -4,6 +4,7 @@ window.clearFields = function() {
     document.getElementById('fname').value = "";
     document.getElementById('lname').value = "";
     document.getElementById('id').value = "";
+    document.getElementById('id').removeAttribute("disabled");
     document.getElementById('age').value = "";
 }
 
@@ -58,7 +59,7 @@ window.addRow = function() {
 }
 
 let table = document.getElementById("table");
-let rIndex;
+let rIndex = "undefined";
 let deleteRow = 0; // symbolized that delete row. Do this for the first row after delete
 let clickRemove = 0; // symbolized that click on remove button. Do this for the select row to delete.
 
@@ -93,7 +94,7 @@ window.initClickOnRow = function ()
                 clickRemove = 0;
                 return;
             }
-            if(typeof rIndex !== "undefined") 
+            if(rIndex !== "undefined") 
             {
                 console.log("boooo");
                 console.log(rIndex);
@@ -101,6 +102,13 @@ window.initClickOnRow = function ()
                 {
                     table.rows[rIndex].classList.toggle("selected");
                     table.rows[rIndex].getElementsByTagName('td')[4].getElementsByTagName('button')[0].setAttribute("disabled","true");
+
+                    if( rIndex == this.rowIndex )
+                    {
+                        window.clearFields();
+                        rIndex = "undefined";
+                        return;
+                    }
                 }
                 else // deleteRow == 1
                 {
