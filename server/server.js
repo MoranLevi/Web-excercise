@@ -10,13 +10,6 @@ app.listen(port, () => {
     console.log("Server is listening on port " + port);
 });
 
-/*
-    db.run('CREATE TABLE employees( \
-            first_name NVARCHAR(20)  NOT NULL,\
-            last_name NVARCHAR(20)  NOT NULL,\
-            id INTEGER PRIMARY KEY NOT NULL,\
-            age INTEGER\
-*/
 const db = new sqlite3.Database('./emp_database.db', (err) => {
     if (err) {
         console.error("Error opening database " + err.message);
@@ -31,10 +24,10 @@ const db = new sqlite3.Database('./emp_database.db', (err) => {
             if (err) {
                 console.log("Table already exists.");
             }
-            // let insert = 'INSERT INTO employees (first_name, last_name, id, age) VALUES (?,?,?,?)';
-            // db.run(insert, ["Moran", "Levi", 206215139, 26]);
-            // db.run(insert, ["Almog", "Afrgan", 305292150, 29]);
-            // db.run(insert, ["Gupta", "Pinky", 302369852, 32]);
+            let insert = 'INSERT INTO employees (first_name, last_name, id, age) VALUES (?,?,?,?)';
+            db.run(insert, ["Moran", "Levi", 206215139, 26]);
+            db.run(insert, ["Almog", "Afrgan", 305292150, 29]);
+            db.run(insert, ["Gupta", "Pinky", 302369852, 32]);
         });
     }
 });

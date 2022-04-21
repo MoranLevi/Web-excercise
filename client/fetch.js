@@ -17,57 +17,29 @@ const sendHttpRequest = (method, url, data) => {
 
 window.getEmployeeById = function(id) {
 // const window.getEmployeeById = (id) => {
-    sendHttpRequest('GET', `http://localhost:8000/employees/${id}`)
-    .then(responseData => {
-        console.log(responseData);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+    return sendHttpRequest('GET', `http://localhost:8000/employees/${id}`);
+    // .then(responseData => {
+    //     console.log(responseData);
+    // })
+    // .catch(err => {
+    //     console.log(err);
+    // });
 };
 
-// const getAllEmployees = () => {
-window.getAllEmployees = function(id) {
-    sendHttpRequest('GET', 'http://localhost:8000/employees')
-    .then(responseData => {
-        console.log(responseData);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+window.getAllEmployees = function() {
+    return sendHttpRequest('GET', 'http://localhost:8000/employees');
 };
 
-// const insertNewEmployee = (newData) => {
 window.insertNewEmployee = function(newData) {
-    sendHttpRequest('POST', 'http://localhost:8000/employees', newData)
-    .then(responseData => {
-        console.log(responseData);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+    return sendHttpRequest('POST', 'http://localhost:8000/employees', newData);
 };
 
-// const updateEmployee = (newData) => {
 window.updateEmployee = function(newData) {
-    sendHttpRequest('PATCH', 'http://localhost:8000/employees', newData)
-    .then(responseData => {
-        console.log(responseData);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+    return sendHttpRequest('PATCH', 'http://localhost:8000/employees', newData);
 };
 
-// const deleteEmployee = (id, newData) => {
-window.deleteEmployee = function(id, newData) {
-    sendHttpRequest('DELETE', `http://localhost:8000/employees/${id}`, newData)
-    .then(responseData => {
-        console.log(responseData);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+window.deleteEmployee = function(id) {
+    return sendHttpRequest('DELETE', `http://localhost:8000/employees/${id}`);
 };
 
 
